@@ -2,8 +2,19 @@
 ###参考资料
 [一口（很长的）气了解 babel](https://zhuanlan.zhihu.com/p/326824078)  
 [一文彻底读懂 Babel](https://zhuanlan.zhihu.com/p/326824078)  
-[babel corejs@3 是如何按需 polyfill 原型对象方法的](https://zhuanlan.zhihu.com/p/139359864)
+[babel corejs@3 是如何按需 polyfill 原型对象方法的](https://zhuanlan.zhihu.com/p/139359864)  
+[Babel 7 升级实践](https://blog.hhking.cn/2019/04/02/babel-v7-update/)  
+[Polyfill 方案的过去、现在和未来](https://github.com/sorrycc/blog/issues/80)  
+[Babel 筆記 (7.7.0 之後)](https://medium.com/@hsuehyungtan/babel-%E7%AD%86%E8%A8%98-7-7-0-5274be4eed93)
+###主要解决什么问题
+```
+如何最小化 polyfill ？
+只引入项目中使用的和浏览器缺失的 polyfill
 
+如何使引入的 polyfill 不污染全局环境？
+@babel/runtime
+
+```
 ###Babel是什么
 ```
 Babel 是一个 JavaScript 编译器。
@@ -57,7 +68,7 @@ preset 从后向前反向执行
 ###添加目标环境缺失功能
 ```
 除了语法转译外，还可以添加目标环境缺失功能。
-通过 @babel/polyfill 后拆成 core-js 和 regenerator-runtime
+通过 @babel/polyfill ，7.4.0后拆成 core-js 和 regenerator-runtime
 ```
 ###目标浏览器指定
 ```

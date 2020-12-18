@@ -4,7 +4,7 @@
  * lib: core-js
  * 添加功能：方法类(Symbol)、静态方法(Array.from)、实例方法(Array.prototype.filter)
  * Ps: 需配置 useBuiltIns: 'usage', corejs: 3, 使能从 core-js 引入额外的功能
- * Ps: generator/yield async/await 这个因为使用代码插入，不安装 core-js 也会插入
+ * Ps: helpers 这个因为使用代码插入，不安装 core-js 也会插入
  */
 
 const babelCore = require('@babel/core');
@@ -46,8 +46,8 @@ babelCore.transform(sourceCode, options, function (err, result) {
 /**
  * 讨论：
  * 预设 @babel/preset-env 配置
- * 本例除了语法转译外，还有 feature 添加测试，feature 分为：方法类、静态方法、实例方法及特殊的 generator/yield 和 async/await
- * generator/yield 和 async/await 会以插入代码的方式加入
+ * 本例除了语法转译外，还有 feature 添加测试，feature 分为：方法类、静态方法、实例方法及helpers
+ * helpers 会以插入代码的方式加入
  * 其它从 core-js 库中引入
  * 预设 @babel/preset-env 配置：
  *  useBuiltIns: false 默认 | entry 入口引入 | usage babel 按需引入

@@ -4,7 +4,7 @@
  * lib: core-js
  * 添加功能：方法类(Symbol)、静态方法(Array.from)、实例方法(Array.prototype.filter)
  * Ps: 需配置 useBuiltIns: 'usage', corejs: 3, 使能从 core-js 引入额外的功能
- * Ps: generator/yield async/await 这个因为使用代码插入，不安装 core-js 也会插入
+ * Ps: helpers 这个因为使用代码插入，不安装 core-js 也会插入
  *
  * 指定浏览器配置：
  * 使用 .browserslistrc 配置文件，如果不想新增文件也可以在 webpack babel-loader | package.json | @babel/preset-env options 配
