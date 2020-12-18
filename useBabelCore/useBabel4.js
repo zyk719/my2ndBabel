@@ -5,6 +5,9 @@
  * 添加功能：方法类(Symbol)、静态方法(Array.from)、实例方法(Array.prototype.filter)
  * Ps: 需配置 useBuiltIns: 'usage', corejs: 3, 使能从 core-js 引入额外的功能
  * Ps: generator/yield async/await 这个因为使用代码插入，不安装 core-js 也会插入
+ *
+ * 指定浏览器配置：
+ * 使用 .browserslistrc 配置文件，如果不想新增文件也可以在 webpack babel-loader | package.json | @babel/preset-env options 配
  */
 
 const babelCore = require('@babel/core');
@@ -31,15 +34,23 @@ const options = {
             '@babel/preset-env',
             {
                 useBuiltIns: 'usage',
-                corejs: 3
+                corejs: 3,
+                targets: {
+                    chrome: '87',
+                }
             }
         ]
     ],
 };
 
 babelCore.transform(sourceCode, options, function (err, result) {
-    console.log('\n<- 源码 ->\n', sourceCode);
-    console.log('\n<- 转译后代码 ->\n', result.code);
-    // console.log(result.map);
-    // console.log(result.ast);
+    console.log('\n<<- @babel/core | target browsers ->>\n')
+    console.log('<<- 源码 ->>\n', sourceCode, '\n');
+    console.log('<<- 转译后代码 ->>\n', result.code, '\n');
 });
+
+/**
+ * 讨论：
+ * 指定转译浏览器版本，.browserslistrc 控制转译结果（修改为 @babel/preset-env option 配置）
+ * 本例通过指定到最新 chrome 浏览器（87），转译结果未做任何语法转换，也没有添加 feature
+ */

@@ -1,4 +1,6 @@
 # 项目排除路径
 /node_modules/
 .idea
-yarn.lock
+/yarn.lock
+/yarn-error.log
+/dist/

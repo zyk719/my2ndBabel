@@ -5,7 +5,7 @@
  */
 
 const babelCore = require("@babel/core");
-const sourceCode = `let fn = (num) => num + 2`;
+const sourceCode = `let fn = num => num + 2;`;
 
 const options = {
     //是否生成解析的代码
@@ -21,8 +21,14 @@ const options = {
 };
 
 babelCore.transform(sourceCode, options, function (err, result) {
-    console.log('\n<- 源码 ->\n', sourceCode);
-    console.log('\n<- 转译后代码 ->\n', result.code);
-    // console.log(result.map);
-    // console.log(result.ast);
+    console.log('\n<<- @babel/core | @babel/preset-env ->>\n')
+    console.log('<<- 源码 ->>\n', sourceCode, '\n');
+    console.log('<<- 转译后代码 ->>\n', result.code, '\n');
 });
+
+/**
+ * 讨论：
+ * 预设 @babel/preset-env 默认配置
+ * 安装 @babel/preset-env 后，会安装许多 helper plugin，它是插件设置的集合
+ * 箭头函数被转译成了 function
+ */

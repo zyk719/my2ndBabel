@@ -5,7 +5,7 @@
  */
 
 const babelCore = require("@babel/core");
-const sourceCode = `let fn = (num) => num + 2`;
+const sourceCode = `let fn = num => num + 2;`;
 
 const options = {
     //是否生成解析的代码
@@ -21,8 +21,14 @@ const options = {
 };
 
 babelCore.transform(sourceCode, options, function (err, result) {
-    console.log('\n<- 源码 ->\n', sourceCode);
-    console.log('\n<- 转译后代码 ->\n', result.code);
-    // console.log(result.map);
-    // console.log(result.ast);
+    console.log('\n<<- @babel/core | @babel/plugin-transform-arrow-functions ->>\n')
+    console.log('<<- 源码 ->>\n', sourceCode, '\n');
+    console.log('<<- 转译后代码 ->>\n', result.code, '\n');
 });
+
+/**
+ * 讨论：
+ * 插件 @babel/plugin-transform-arrow-function
+ * 在已知需要转换的语法时，可以指定转换插件，例如：箭头函数
+ * 本例目的为了做插件使用尝试
+ */
