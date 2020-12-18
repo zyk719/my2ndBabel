@@ -1,4 +1,8 @@
 /**
+ * todo core-js@3 引入的不污染全局
+ */
+
+/**
  * 问题：如何《《 按需：usage & browserslist 》》引入《《 不会污染全局环境 》》的 polyfill ？
  *  preset-env 可以按需引入，但会污染全局环境
  *  transform-runtime 不会污染全局环境，但不会读取 .browserslistrc
@@ -30,46 +34,46 @@ module.exports = {
              * with @babel/runtime-corejs3
              */
             '@babel/plugin-transform-runtime',
-            // {
-            //     /**
-            //      * 指定 polyfill 版本
-            //      * corejs: false - @babel/runtime (default)
-            //      * corejs: 2     - @babel/runtime-corejs2
-            //      * corejs: 3     - @babel/runtime-corejs3
-            //      */
-            //     corejs: 3,
-            //
-            //     /**
-            //      * default true
-            //      * Toggles whether or not inlined Babel helpers (classCallCheck, extends, etc.)
-            //      * are replaced with calls to moduleName.
-            //      */
-            //     helper: true,
-            //
-            //     /**
-            //      * default true
-            //      * Toggles whether or not generator functions are transformed to use a regenerator
-            //      * runtime that does not pollute the global scope.
-            //      */
-            //     regenerator: true,
-            //
-            //     /**
-            //      * default false
-            //      * This allows for smaller builds in module systems like webpack, since it doesn't need to preserve commonjs semantics.
-            //      */
-            //     useESModules: false,
-            //
-            //     /**
-            //      * default false
-            //      * This allows users to run transform-runtime broadly across a whole project.
-            //      */
-            //     absoluteRuntime: false,
-            //
-            //     /**
-            //      * 指定 @babel/runtime-corejs2@7.7.4 版本
-            //      */
-            //     // version: ''
-            // },
+            {
+                /**
+                 * 指定 polyfill 版本
+                 * corejs: false - @babel/runtime (default)
+                 * corejs: 2     - @babel/runtime-corejs2
+                 * corejs: 3     - @babel/runtime-corejs3
+                 */
+                corejs: false,
+
+                /**
+                 * default true
+                 * Toggles whether or not inlined Babel helpers (classCallCheck, extends, etc.)
+                 * are replaced with calls to moduleName.
+                 */
+                helper: true,
+
+                /**
+                 * default true
+                 * Toggles whether or not generator functions are transformed to use a regenerator
+                 * runtime that does not pollute the global scope.
+                 */
+                regenerator: true,
+
+                /**
+                 * default false
+                 * This allows for smaller builds in module systems like webpack, since it doesn't need to preserve commonjs semantics.
+                 */
+                useESModules: false,
+
+                /**
+                 * default false
+                 * This allows users to run transform-runtime broadly across a whole project.
+                 */
+                absoluteRuntime: false,
+
+                /**
+                 * 指定 @babel/runtime-corejs2@7.7.4 版本
+                 */
+                // version: ''
+            },
         ],
     ],
     presets: [
