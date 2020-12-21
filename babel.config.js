@@ -1,8 +1,4 @@
 /**
- * todo core-js@3 引入的不污染全局
- */
-
-/**
  * 问题：如何《《 按需：usage & browserslist 》》引入《《 不会污染全局环境 》》的 polyfill ？
  *  preset-env 可以按需引入，但会污染全局环境
  *  transform-runtime 不会污染全局环境，但不会读取 .browserslistrc
@@ -25,7 +21,7 @@ module.exports = {
          *  can use them seamlessly without having to require the polyfill.
          * 3. Automatically requires @babel/runtime/regenerator when you use generators/async functions
          *
-         * 不能识别 .browserslistrc ，浏览器有的功能也引入了 polyfill
+         * 不能识别 .browserslistrc ，浏览器已经有的功能也引入了 polyfill
          *  同问 https://github.com/babel/babel/issues/10250
          *  《《《 因此只使用以引用添加 helpers 的功能 》》》
          */
@@ -122,6 +118,8 @@ module.exports = {
  *  a. helpers 会插入到每一个文件中，项目文件多的时候造成不必要的重复
  *  b. core-js 改造目标浏览器，让你的浏览器拥有本来不支持的特性
  *     从 core-js 引入的缺失功能会污染全局变量，开发 app 问题不大，但开发库时影响很大
+ *
+ * 或
  *
  * 2. @babel/plugin-transform-runtime: ( corejs: 3, )
  *  '@babel/runtime改造你的代码，让你的代码能在所有目标浏览器上运行，但不改造浏览器
